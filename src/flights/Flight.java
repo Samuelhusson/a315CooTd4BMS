@@ -28,12 +28,15 @@ public class Flight {
 	public LocalTime getDepartTime() {
 		return departureTime;
 	}
+
 	public void setDepartureTime(LocalTime departTime) {
 		this.departureTime = departTime;
 	}
+
 	public Flight(String departureAirport) {
 		this(NOT_ASSIGNED, LocalDate.now(), LocalTime.now(), departureAirport, DEFAULT_DESTINATION);
 	}
+
 	public Flight(double price, LocalDate departDate, LocalTime departTime, String departAirport, String arrivalAirport) {
 		super();
 		this.price = price;
@@ -42,9 +45,11 @@ public class Flight {
 		this.arrivalAirport = arrivalAirport;
 		this.departureTime= departTime;
 	}
+
 	public LocalDate getDepartDate() {
 		return departDate;
 	}
+
 	public void setDepartDate(LocalDate departDate) {
 		this.departDate = departDate;
 	}
