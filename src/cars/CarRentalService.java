@@ -2,6 +2,7 @@ package cars;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import util.DateTools;
@@ -64,7 +65,23 @@ public class CarRentalService {
 		return true;
 	}
 	
+	public List<Car> sortedCarsByPrice() {
+		cars.sort(Comparator.comparing(Car::getDayPrice));
+		return new ArrayList<>(cars);
+	}
 	
+	public List<CarRental> sortedCarRentalsByPrice() {
+		carRentals.sort(Comparator.comparing(CarRental::getPrice));
+		return new ArrayList<>(carRentals);
+	}
+
+	public Car bestPriceCar() {
+		return sortedCarsByPrice().get(0);
+	}
+	
+	public CarRental bestPriceCarRental() {
+		return sortedCarRentalsByPrice().get(0);
+	}
 	
 	/**
 	 * It books the car rental and returns the created {@code CarRental} 
