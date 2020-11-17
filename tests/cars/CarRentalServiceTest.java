@@ -23,7 +23,7 @@ public class CarRentalServiceTest {
 		 myCar0 = new Car("1111 AB 06",50);
 		 myCar1 = new Car("1111 AB 75",100);
 		 myCar2 = new Car("1111 AB 83",75);
-		service = new CarRentalService( new ArrayList<>(Arrays.asList(myCar0, myCar1, myCar2) )  )  ;
+		 service = new CarRentalService( new ArrayList<>(Arrays.asList(myCar0, myCar1, myCar2) )  )  ;
 		
 	}
 
@@ -93,6 +93,19 @@ public class CarRentalServiceTest {
 		assertEquals(3, possibleCars.size());
 	}
 
+	@Test
+	public void testSortedCars() throws NotPossibleCarRentalException {
+		LocalDate current = LocalDate.of(2020,11,17);
+		CarRental carRental0 = service.book(myCar0,current,2);
+		CarRental carRental1 = service.book(myCar1,current,2);
+		CarRental carRental2 = service.book(myCar2,current,2);
 
+		//Test des fonctions pour trier par prix les différentes voitures et locations
+		//Etape 0: 2)
+		assertEquals(new ArrayList<>(Arrays.asList(myCar0, myCar2, myCar1)), service.sortedCarsByPrice());
+		assertEquals(new ArrayList<>(Arrays.asList(carRental0, carRental2, carRental1)), service.sortedCarRentalsByPrice());
+		assertEquals(myCar0,service.bestPriceCar());
+		assertEquals(carRental0,service.bestPriceCarRental());
+	}
 
 }
