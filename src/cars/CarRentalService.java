@@ -8,7 +8,6 @@ import java.util.List;
 import util.DateTools;
 import util.NotPossibleCarRentalException;
 
-
 /**
  *
  * This class allows the management of a set of car rentals
@@ -25,11 +24,6 @@ public class CarRentalService {
 	
 	//All registered car rentals
 	private List<CarRental> carRentals = new ArrayList<>();
-
-
-
-	
-
 
 	//To create a car rental service,  you need to have cars.
 	public CarRentalService(List<Car> cars) {
@@ -102,7 +96,4 @@ public class CarRentalService {
 		}
 		return carRental;
 	}
-	
-	
-
 }
