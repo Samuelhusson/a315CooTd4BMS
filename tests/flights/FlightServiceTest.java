@@ -61,4 +61,9 @@ public class FlightServiceTest {
 		assertEquals(150,flights.get(2).getPrice(),0.01);
 	}
 
+	@Test
+	public void testBestPriceFlight() {
+		assertEquals(20, service.bestPriceFlight().getPrice(), 0);
+	}
+
 }
