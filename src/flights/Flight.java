@@ -17,8 +17,8 @@ import java.util.Random;
  */
 public class Flight {
 
-	private static final   int NOT_ASSIGNED = -1;
-	private static final   String DEFAULT_DESTINATION= "Paris";
+	private static final int NOT_ASSIGNED = -1;
+	private static final String DEFAULT_DESTINATION= "Paris";
 	private double price = NOT_ASSIGNED;
 	private LocalDate departDate;
 	private String departureAirport;

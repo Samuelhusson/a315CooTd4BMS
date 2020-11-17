@@ -55,4 +55,8 @@ public class FlightService {
 		return new ArrayList<>(flights);
 	}
 
+	public Flight bestPriceFlight() {
+		return sortedByPrice().get(0);
+	}
+
 }
