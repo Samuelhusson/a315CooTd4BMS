@@ -1,6 +1,6 @@
 package flights;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,14 +14,11 @@ import flights.Flight;
 public class FlightTest {
 
 	
-	Flight f1 = new Flight(100, LocalDate.of(2017,11,11), LocalTime.of(7, 45),"Nice","Paris");
-	/*@BeforeEach
+	Flight f1 ;
+	@Before //Le BeforeEach causait des problèmes d'exécution, nous l'avons donc remplacé par un before. Nous pensons que cela vient d'un conflit de versions de JUnit.
 	public void setUp() {
 		f1 = new Flight(100, LocalDate.of(2017,11,11), LocalTime.of(7, 45),"Nice","Paris");
-	}*/
-
-	//Le BeforeEach causait des problèmes d'exécution, nous avons donc décidé de le retirer
-
+	}
 
 	@Test
 	public void testGetPrice() {
