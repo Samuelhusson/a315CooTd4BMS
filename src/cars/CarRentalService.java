@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import core.Service4PI;
 import util.DateTools;
 import util.NotPossibleCarRentalException;
 
@@ -17,17 +18,14 @@ import util.NotPossibleCarRentalException;
  *
  * 
  */
-public class CarRentalService {
+public class CarRentalService extends Service4PI<CarRental> {
 
 	//Set of cars for rent
 	private List<Car> cars;
-	
-	//All registered car rentals
-	private List<CarRental> carRentals = new ArrayList<>();
 
 	//To create a car rental service,  you need to have cars.
 	public CarRentalService(List<Car> cars) {
-		super();
+		super(new ArrayList<CarRental>());
 		this.cars = cars;
 	}
 
@@ -50,7 +48,7 @@ public class CarRentalService {
 	
 
 	private boolean isAvailable(Car c, LocalDate[] dates) {
-		for (CarRental carRental : carRentals) {
+		for (CarRental carRental : super.payingItemList) {
 			if (c.equals(carRental.getCar()) &&
 				(carRental.includeADate(dates)) ) {
 				return false;	
@@ -59,22 +57,8 @@ public class CarRentalService {
 		return true;
 	}
 	
-	public List<Car> sortedCarsByPrice() {
-		cars.sort(Comparator.comparing(Car::getDayPrice));
-		return new ArrayList<>(cars);
-	}
-	
-	public List<CarRental> sortedCarRentalsByPrice() {
-		carRentals.sort(Comparator.comparing(CarRental::getPrice));
-		return new ArrayList<>(carRentals);
-	}
-
-	public Car bestPriceCar() {
-		return sortedCarsByPrice().get(0);
-	}
-	
 	public CarRental bestPriceCarRental() {
-		return sortedCarRentalsByPrice().get(0);
+		return sortedByPrice().get(0);
 	}
 	
 	/**
@@ -92,7 +76,7 @@ public class CarRentalService {
 		LocalDate[] dates = DateTools.getDays(fromDate, numberOfDays);
 		if (isAvailable(c, dates)) {
 			carRental = new CarRental(c, fromDate, numberOfDays);
-			carRentals.add(carRental);
+			super.payingItemList.add(carRental);
 		}
 		return carRental;
 	}
