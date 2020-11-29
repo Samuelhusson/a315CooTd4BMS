@@ -102,9 +102,7 @@ public class CarRentalServiceTest {
 
 		//Test des fonctions pour trier par prix les différentes voitures et locations
 		//Etape 0: 2)
-		assertEquals(new ArrayList<>(Arrays.asList(myCar0, myCar2, myCar1)), service.sortedCarsByPrice());
-		assertEquals(new ArrayList<>(Arrays.asList(carRental0, carRental2, carRental1)), service.sortedCarRentalsByPrice());
-		assertEquals(myCar0,service.bestPriceCar());
+		assertEquals(new ArrayList<>(Arrays.asList(carRental0, carRental2, carRental1)), service.sortedByPrice());
 		assertEquals(carRental0,service.bestPriceCarRental());
 	}
 
