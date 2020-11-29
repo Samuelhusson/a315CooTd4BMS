@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import core.Service4PI;
+import rental.Service;
 
 /**
  * This class allows the management of a set of flights
@@ -16,7 +17,7 @@ import core.Service4PI;
  * 
  */
 
-public class FlightService extends Service4PI<Flight> {
+public class FlightService extends Service4PI<Flight> implements Service {
 
 	public FlightService(List<Flight> flights) {
 		super(flights);

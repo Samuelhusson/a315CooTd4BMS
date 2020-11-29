@@ -1,4 +1,3 @@
-/*
 package testRental;
 
 import static org.junit.Assert.assertEquals;
@@ -11,9 +10,9 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.Description;
 import cars.*;
 import flights.*;
+import rental.*;
 import util.*;
 
 
@@ -60,7 +59,7 @@ class TravelOrganizerTest {
 
 		airFrance = new FlightService(list);
 
-		description = new Description(LocalDate.of(2017, 12, 24), "Nice", "Paris", 3);
+		description = new Description(LocalDate.of(2017, 12, 24), "Nice", "Paris", 3);;
 
 		travelOrganizer = new TravelOrganizer();
 	}
@@ -129,4 +128,3 @@ class TravelOrganizerTest {
 	
 	
 }
-*/

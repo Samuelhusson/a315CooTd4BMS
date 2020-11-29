@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import core.Service4PI;
+import rental.Service;
 import util.DateTools;
 import util.NotPossibleCarRentalException;
 
@@ -18,7 +19,7 @@ import util.NotPossibleCarRentalException;
  *
  * 
  */
-public class CarRentalService extends Service4PI<CarRental> {
+public class CarRentalService extends Service4PI<CarRental> implements Service {
 
 	//Set of cars for rent
 	private List<Car> cars;
