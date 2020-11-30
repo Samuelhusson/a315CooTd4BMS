@@ -46,13 +46,4 @@ public class Description {
     public void setDuration(int dur) {
     	duration = dur;
     }
-    
-    public boolean equals(Description desc) {
-    	if (this.departDate == desc.getDepartDate() && this.departPlace == desc.getDepartPlace() && this.arrivalPlace == desc.getArrivalPlace() && this.duration == desc.getDuration()) {
-    		return true;
-    	}
-    	
-    	return false;
-    }
-    
 }
