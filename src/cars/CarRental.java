@@ -2,6 +2,7 @@ package cars;
 
 import java.time.LocalDate;
 import core.PayingItem;
+import rental.Product;
 
 /**
  * 
@@ -15,7 +16,7 @@ import core.PayingItem;
  * @author blay
  *
  */
-public class CarRental implements PayingItem {
+public class CarRental implements PayingItem, Product {
 
 	private Car car;
 	private double dayPrice;

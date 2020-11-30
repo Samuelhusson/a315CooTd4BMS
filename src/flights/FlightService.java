@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import core.Service4PI;
+import rental.Description;
+import rental.Product;
 import rental.Service;
 
 /**
@@ -48,6 +50,17 @@ public class FlightService extends Service4PI<Flight> implements Service {
 
 	public Flight bestPriceFlight() {
 		return sortedByPrice().get(0);
+	}
+
+	@Override
+	public Product find(Description desc) {
+		List<Flight> fl = sortedByPrice();
+		for (Flight f : fl) {
+			if (f.match(desc.getDepartDate(), desc.getDepartPlace(), desc.getArrivalPlace())) {
+				return f;
+			}
+		}
+		return null;
 	}
 
 }

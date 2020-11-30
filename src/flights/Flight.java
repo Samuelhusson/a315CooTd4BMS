@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.Random;
 
 import core.PayingItem;
+import rental.Product;
 
 /**
  * 
@@ -17,7 +18,7 @@ import core.PayingItem;
  *
  *
  */
-public class Flight implements PayingItem {
+public class Flight implements PayingItem, Product {
 
 	private static final int NOT_ASSIGNED = -1;
 	private static final String DEFAULT_DESTINATION= "Paris";

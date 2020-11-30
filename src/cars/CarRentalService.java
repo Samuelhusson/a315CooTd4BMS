@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import core.Service4PI;
+import rental.Description;
+import rental.Product;
 import rental.Service;
 import util.DateTools;
 import util.NotPossibleCarRentalException;
@@ -80,5 +82,19 @@ public class CarRentalService extends Service4PI<CarRental> implements Service {
 			super.payingItemList.add(carRental);
 		}
 		return carRental;
+	}
+
+
+	@Override
+	public Product find(Description desc) {
+		this.cars.forEach(car -> {
+			try {
+				book(car, desc.getDepartDate(), desc.getDuration());
+			} catch (NotPossibleCarRentalException e) {
+				e.printStackTrace();
+			}
+		});
+		List<CarRental> cr = sortedByPrice();
+		return cr.get(0);
 	}
 }
