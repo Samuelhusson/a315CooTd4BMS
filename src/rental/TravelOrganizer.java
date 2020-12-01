@@ -1,12 +1,9 @@
 package rental;
 
-import cars.CarRentalService;
-import flights.FlightService;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class TravelOrganizer implements Service{
+public class TravelOrganizer{
 
     private List<Service> services;
 
@@ -31,10 +28,4 @@ public class TravelOrganizer implements Service{
     public void addService(Service service) {
         services.add(service);
     }
-
-	@Override
-	public Product find(Description desc) {
-		return null;
-	}
-    
 }

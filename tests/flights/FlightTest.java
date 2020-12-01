@@ -7,9 +7,6 @@ import java.time.LocalTime;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-
-import flights.Flight;
 
 public class FlightTest {
 

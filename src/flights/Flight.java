@@ -100,4 +100,9 @@ public class Flight implements PayingItem, Product {
 		return getDepartDate().equals(d) && getDepartAirport().equals(from) && getArrivalAirport().equals(to);
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Vol d'avion : Date de départ : "+departDate+"; Aéroport de départ : "+departureAirport+"; Aéroport d'arrivé : "+arrivalAirport+"; Heure de départ : "+departureTime+"; Prix : "+this.getPrice()+"\n";
+	}
 }

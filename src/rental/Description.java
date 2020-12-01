@@ -46,4 +46,9 @@ public class Description {
     public void setDuration(int dur) {
     	duration = dur;
     }
+    
+    @Override
+    public String toString() {
+    	return "Date de départ : "+departDate+"; Lieu de départ : "+departPlace+"; Lieu d'arrivé : "+arrivalPlace+"; Durée maximale du voyage : "+duration;
+    }
 }
