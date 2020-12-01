@@ -96,6 +96,6 @@ public class CarRental implements PayingItem, Product {
 
 	@Override
 	public String toString() {
-		return "Location de voiture : Date de début : "+beginDate+"; durée de la location : "+duration+"; Prix par jour : "+dayPrice+" Price : "+this.getPrice()+"\n";
+		return "Location de voiture : Date de début : "+beginDate+"; durée de la location : "+duration+"; Prix par jour : "+dayPrice+" Prix : "+this.getPrice()+"\n";
 	}
 }

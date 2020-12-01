@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import cars.*;
 import flights.*;
 import rental.*;
+import hotel.*;
 
 
 class TravelOrganizerTest {
@@ -20,10 +21,14 @@ class TravelOrganizerTest {
 	CarRentalService havis;
 	CarRentalService easyCar;
 	
+	HotelRentalService Ibis;
+	HotelRentalService F1;
+	
 	FlightService easyJet;
 	FlightService airFrance;
 	
 	Description description;
+	Description desc;
 	TravelOrganizer travelOrganizer;
 
 	Flight niceParis;
@@ -40,6 +45,16 @@ class TravelOrganizerTest {
 		Car yourCar2 = new Car("1111 AB 83", 75);
 		easyCar = new CarRentalService(new ArrayList<>(Arrays.asList(yourCar0, yourCar1, yourCar2)));
 
+		Hotel Budgets = new Hotel("Budgets", 40);
+		Hotel Style = new Hotel("Style", 70);
+		Hotel Familial = new Hotel("Familial", 55);
+		Ibis = new HotelRentalService(new ArrayList<>(Arrays.asList(Budgets, Style, Familial)));
+		
+		Hotel formule1 = new Hotel("formule1", 86);
+		Hotel formule2 = new Hotel("formule2", 65);
+		Hotel formule3 = new Hotel("formule3", 52);
+		F1 = new HotelRentalService(new ArrayList<>(Arrays.asList(formule1, formule2, formule3)));
+		
 		ArrayList<Flight> list = new ArrayList<>();
 		Flight belfortParis = new Flight("Belfort");
 		//System.out.println(belfortParis);
@@ -58,7 +73,9 @@ class TravelOrganizerTest {
 
 		airFrance = new FlightService(list);
 
-		description = new Description(LocalDate.of(2017, 12, 24), "Nice", "Paris", 3);;
+		description = new Description(LocalDate.of(2017, 12, 24), "Nice", "Paris", 3);
+		
+		desc = new Description(LocalDate.of(2017, 12, 24), "Nice", "Paris", 1);
 
 		travelOrganizer = new TravelOrganizer();
 	}
@@ -69,6 +86,18 @@ class TravelOrganizerTest {
 		Trip trip = travelOrganizer.createATrip(description);
 		assertTrue(trip != null);
 		assertEquals(2, trip.getProducts().size());
+	}
+	
+	@Test
+	void testcreateATripwithCarsandHotels() {
+		initcars();
+		initHotels();
+		Trip trip = travelOrganizer.createATrip(description);
+		assertTrue(trip != null);
+		assertEquals(4, trip.getProducts().size());
+		Trip trip2 = travelOrganizer.createATrip(desc);
+		assertTrue(trip2 != null);
+		assertEquals(2, trip2.getProducts().size());
 	}
 
 	@Test
@@ -95,6 +124,20 @@ class TravelOrganizerTest {
 		//System.out.println(trip.getProducts());
 		assertEquals(3, trip.getProducts().size());
 	}
+	
+	@Test
+	void testcreateATripwithFlightandCarsandHotels() {
+		initcars();
+		initFlights();
+		initHotels();
+		Trip trip = travelOrganizer.createATrip(description);
+		assertTrue(trip != null);
+		assertEquals(5, trip.getProducts().size());
+		Trip trip2 = travelOrganizer.createATrip(desc);
+		assertTrue(trip2 != null);
+		assertEquals(3, trip2.getProducts().size());
+	}
+	
 
 	private void initcars() {
 		travelOrganizer.addService(havis);
@@ -104,6 +147,11 @@ class TravelOrganizerTest {
 	private void initFlights() {
 		travelOrganizer.addService(easyJet);
 		travelOrganizer.addService(airFrance);
+	}
+	
+	private void initHotels() {
+		travelOrganizer.addService(Ibis);
+		travelOrganizer.addService(F1);
 	}
 
 	
